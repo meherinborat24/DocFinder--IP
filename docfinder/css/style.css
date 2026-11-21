@@ -1,0 +1,1314 @@
+/* ==========================================================================
+   DocFinder - Modern Healthcare Platform Stylesheet
+   Based on DocFinder UI Presentation
+   ========================================================================== */
+
+:root {
+  /* Brand Colors - matching PDF presentation */
+  --df-primary: #1e60d5;
+  --df-primary-hover: #154fb5;
+  --df-primary-dark: #0f357e;
+  --df-primary-subtle: #edf4ff;
+  --df-primary-border: #bfd7ff;
+  
+  --df-secondary: #0ea5e9;
+  --df-success: #10b981;
+  --df-success-subtle: #d1fae5;
+  --df-warning: #f59e0b;
+  --df-warning-subtle: #fef3c7;
+  --df-danger: #ef4444;
+  --df-danger-subtle: #fee2e2;
+
+  /* Neutrals */
+  --df-dark: #0f172a;
+  --df-slate: #1e293b;
+  --df-body: #334155;
+  --df-muted: #64748b;
+  --df-light: #f8fafc;
+  --df-card-bg: #ffffff;
+  --df-border: #e2e8f0;
+  --df-border-subtle: #f1f5f9;
+
+  /* Typography */
+  --df-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+  /* Geometry & Shadows */
+  --df-radius-sm: 8px;
+  --df-radius: 12px;
+  --df-radius-lg: 16px;
+  --df-radius-xl: 24px;
+  --df-radius-pill: 9999px;
+
+  --df-shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --df-shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+  --df-shadow: 0 6px 20px -3px rgba(15, 23, 42, 0.07), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+  --df-shadow-hover: 0 14px 28px -4px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.06);
+
+  --df-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--df-font-sans);
+  color: var(--df-body);
+  background-color: var(--df-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--df-dark);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--df-primary);
+  text-decoration: none;
+  transition: var(--df-transition);
+}
+
+a:hover {
+  color: var(--df-primary-hover);
+}
+
+/* ==========================================================================
+   Custom UI / Navigation Header
+   ========================================================================== */
+.navbar-docfinder {
+  background: var(--df-card-bg);
+  border-bottom: 1px solid var(--df-border);
+  padding: 0.85rem 0;
+  transition: var(--df-transition);
+}
+
+.navbar-docfinder .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--df-dark);
+}
+
+.brand-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+  border-radius: var(--df-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  border: 1px solid var(--df-primary-border);
+}
+
+.brand-text {
+  letter-spacing: -0.02em;
+}
+
+.brand-text span {
+  color: var(--df-primary);
+}
+
+.navbar-docfinder .nav-link {
+  color: var(--df-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--df-radius-sm);
+  transition: var(--df-transition);
+}
+
+.navbar-docfinder .nav-link:hover,
+.navbar-docfinder .nav-link.active {
+  color: var(--df-primary);
+  background: var(--df-primary-subtle);
+}
+
+.btn-primary-docfinder {
+  background-color: var(--df-primary);
+  border-color: var(--df-primary);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--df-radius-sm);
+  transition: var(--df-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary-docfinder:hover,
+.btn-primary-docfinder:focus {
+  background-color: var(--df-primary-hover);
+  border-color: var(--df-primary-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(30, 96, 213, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-outline-docfinder {
+  background-color: transparent;
+  border: 1px solid var(--df-primary);
+  color: var(--df-primary);
+  font-weight: 600;
+  padding: 0.55rem 1.3rem;
+  border-radius: var(--df-radius-sm);
+  transition: var(--df-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-outline-docfinder:hover {
+  background-color: var(--df-primary-subtle);
+  border-color: var(--df-primary);
+  color: var(--df-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-light-docfinder {
+  background-color: #ffffff;
+  border: 1px solid var(--df-border);
+  color: var(--df-body);
+  font-weight: 500;
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--df-radius-sm);
+  transition: var(--df-transition);
+}
+
+.btn-light-docfinder:hover {
+  background-color: var(--df-light);
+  border-color: var(--df-muted);
+  color: var(--df-dark);
+}
+
+/* ==========================================================================
+   Hero Section (as shown on Page 2)
+   ========================================================================== */
+.hero-section {
+  padding: 4.5rem 0 3.5rem;
+  background: radial-gradient(circle at 50% 20%, rgba(237, 244, 255, 0.7) 0%, rgba(248, 250, 252, 0.9) 70%);
+  text-align: center;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+  border: 1px solid var(--df-primary-border);
+  border-radius: var(--df-radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--df-dark);
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--df-muted);
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Hero Search Component */
+.hero-search-box {
+  max-width: 820px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 0.5rem;
+  border-radius: var(--df-radius-lg);
+  border: 1px solid var(--df-border);
+  box-shadow: var(--df-shadow);
+  transition: var(--df-transition);
+}
+
+.hero-search-box:focus-within {
+  border-color: var(--df-primary);
+  box-shadow: 0 8px 30px rgba(30, 96, 213, 0.15);
+}
+
+.hero-search-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-input-group {
+  flex: 1 1 240px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  border-right: 1px solid var(--df-border);
+}
+
+.search-input-group:last-of-type {
+  border-right: none;
+}
+
+@media (max-width: 767.98px) {
+  .search-input-group {
+    border-right: none;
+    border-bottom: 1px solid var(--df-border);
+    padding-bottom: 0.6rem;
+  }
+}
+
+.search-input-group i {
+  color: var(--df-primary);
+  font-size: 1.1rem;
+}
+
+.search-input-group input,
+.search-input-group select {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 0.95rem;
+  color: var(--df-dark);
+}
+
+.search-input-group input::placeholder {
+  color: var(--df-muted);
+}
+
+/* Quick Feature Cards (Page 2: 4 cards below hero) */
+.quick-feature-grid {
+  margin-top: 3rem;
+}
+
+.quick-feature-card {
+  background: #ffffff;
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: var(--df-transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.quick-feature-card:hover {
+  border-color: var(--df-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--df-shadow-hover);
+}
+
+.feature-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--df-radius-sm);
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid var(--df-primary-border);
+  transition: var(--df-transition);
+}
+
+.quick-feature-card:hover .feature-icon-box {
+  background: var(--df-primary);
+  color: #ffffff;
+}
+
+.quick-feature-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--df-dark);
+  margin-bottom: 0.25rem;
+}
+
+.quick-feature-sub {
+  font-size: 0.85rem;
+  color: var(--df-muted);
+  margin: 0;
+}
+
+/* Popular Tag Pills */
+.popular-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.popular-label {
+  font-size: 0.85rem;
+  color: var(--df-muted);
+  font-weight: 600;
+}
+
+.tag-pill {
+  font-size: 0.82rem;
+  padding: 0.35rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius-pill);
+  color: var(--df-body);
+  transition: var(--df-transition);
+}
+
+.tag-pill:hover {
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+  border-color: var(--df-primary-border);
+}
+
+/* ==========================================================================
+   Doctor Card (Matching PDF Page 3 & Page 4)
+   ========================================================================== */
+.doctor-card {
+  background: var(--df-card-bg);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1.4rem;
+  margin-bottom: 1.25rem;
+  transition: var(--df-transition);
+  box-shadow: var(--df-shadow-xs);
+  position: relative;
+}
+
+.doctor-card:hover {
+  border-color: var(--df-primary-border);
+  box-shadow: var(--df-shadow);
+  transform: translateY(-2px);
+}
+
+.doctor-card-content {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.doctor-avatar-box {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--df-radius-pill);
+  background: var(--df-primary-subtle);
+  border: 2px solid var(--df-primary-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.doctor-avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-avatar-placeholder {
+  font-size: 2rem;
+  color: var(--df-primary);
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--df-success);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.doctor-info-box {
+  flex: 1 1 260px;
+}
+
+.doctor-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--df-dark);
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verified-badge {
+  color: var(--df-primary);
+  font-size: 0.95rem;
+}
+
+.doctor-specialty-fee {
+  font-size: 0.92rem;
+  color: var(--df-muted);
+  margin-bottom: 0.4rem;
+}
+
+.doctor-fee-highlight {
+  color: var(--df-primary);
+  font-weight: 700;
+}
+
+.doctor-rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #b45309;
+  background: #fef3c7;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--df-radius-pill);
+}
+
+.doctor-rating-pill i {
+  color: #f59e0b;
+}
+
+.doctor-meta-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--df-muted);
+  margin-top: 0.5rem;
+}
+
+.doctor-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.doctor-action-box {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.btn-bookmark {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--df-radius-sm);
+  border: 1px solid var(--df-border);
+  background: #ffffff;
+  color: var(--df-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--df-transition);
+  cursor: pointer;
+}
+
+.btn-bookmark:hover,
+.btn-bookmark.active {
+  color: var(--df-danger);
+  border-color: var(--df-danger);
+  background: var(--df-danger-subtle);
+}
+
+/* ==========================================================================
+   Filter Sidebar (Page 3: Specialties Sidebar)
+   ========================================================================== */
+.filter-card {
+  background: var(--df-card-bg);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1.4rem;
+  box-shadow: var(--df-shadow-xs);
+  margin-bottom: 1.5rem;
+}
+
+.filter-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--df-dark);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--df-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-list-item {
+  margin-bottom: 0.4rem;
+}
+
+.filter-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--df-radius-sm);
+  color: var(--df-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--df-transition);
+}
+
+.filter-link:hover,
+.filter-link.active {
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+  font-weight: 600;
+}
+
+.filter-badge {
+  background: var(--df-light);
+  color: var(--df-muted);
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--df-radius-pill);
+}
+
+.filter-link.active .filter-badge {
+  background: var(--df-primary);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Doctor Profile Details (Page 4)
+   ========================================================================== */
+.profile-hero-card {
+  background: var(--df-card-bg);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--df-shadow);
+  margin-bottom: 1.5rem;
+}
+
+.profile-avatar-large {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--df-radius-pill);
+  background: var(--df-primary-subtle);
+  border: 3px solid var(--df-primary-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--df-primary);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.profile-avatar-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 3-Column Info Cards as shown on Page 4 */
+.info-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 767.98px) {
+  .info-metrics-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-metric-card {
+  background: var(--df-light);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1rem;
+  text-align: center;
+}
+
+.info-metric-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--df-muted);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.info-metric-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--df-dark);
+}
+
+.info-metric-value.highlight {
+  color: var(--df-primary);
+}
+
+/* ==========================================================================
+   Booking Flow & Stepper (Page 5, 6, 7)
+   ========================================================================== */
+.booking-container-card {
+  background: var(--df-card-bg);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius-lg);
+  box-shadow: var(--df-shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 3-Step Progress Bar (Page 6) */
+.step-progress-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--df-border);
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--df-muted);
+}
+
+.step-item.active {
+  color: var(--df-primary);
+}
+
+.step-item.completed {
+  color: var(--df-success);
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--df-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--df-light);
+  color: var(--df-muted);
+}
+
+.step-item.active .step-circle {
+  background: var(--df-primary);
+  border-color: var(--df-primary);
+  color: #ffffff;
+}
+
+.step-item.completed .step-circle {
+  background: var(--df-success);
+  border-color: var(--df-success);
+  color: #ffffff;
+}
+
+.step-divider-line {
+  flex: 0 0 40px;
+  height: 2px;
+  background: var(--df-border);
+}
+
+.step-item.completed + .step-divider-line,
+.step-item.active + .step-divider-line {
+  background: var(--df-primary);
+}
+
+/* Calendar Date Selection (Page 5) */
+.calendar-card {
+  background: var(--df-light);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1.25rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: var(--df-dark);
+}
+
+.calendar-days-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--df-muted);
+  margin-bottom: 0.5rem;
+}
+
+.calendar-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.calendar-date-btn {
+  aspect-ratio: 1;
+  border: 1px solid transparent;
+  background: #ffffff;
+  border-radius: var(--df-radius-sm);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--df-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--df-transition);
+}
+
+.calendar-date-btn:hover {
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+  border-color: var(--df-primary-border);
+}
+
+.calendar-date-btn.active {
+  background: var(--df-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--df-primary) !important;
+  box-shadow: 0 4px 10px rgba(30, 96, 213, 0.3);
+}
+
+.calendar-date-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Available Time Slots Grid (Page 5) */
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.time-slot-btn {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--df-border);
+  background: #ffffff;
+  border-radius: var(--df-radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--df-dark);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--df-transition);
+}
+
+.time-slot-btn:hover {
+  border-color: var(--df-primary);
+  color: var(--df-primary);
+  background: var(--df-primary-subtle);
+}
+
+.time-slot-btn.active {
+  border-color: var(--df-primary);
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+  box-shadow: inset 0 0 0 1px var(--df-primary);
+}
+
+/* Patient Form (Page 6) */
+.form-label-docfinder {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--df-dark);
+  margin-bottom: 0.4rem;
+}
+
+.form-control-docfinder {
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius-sm);
+  padding: 0.65rem 0.95rem;
+  font-size: 0.95rem;
+  color: var(--df-dark);
+  background-color: #ffffff;
+  transition: var(--df-transition);
+}
+
+.form-control-docfinder:focus {
+  border-color: var(--df-primary);
+  box-shadow: 0 0 0 3px rgba(30, 96, 213, 0.15);
+  outline: none;
+}
+
+/* Confirmation Screen (Page 7) */
+.confirmation-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.success-icon-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--df-success-subtle);
+  color: var(--df-success);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  border: 3px solid rgba(16, 185, 129, 0.2);
+  animation: pulse-success 2s infinite;
+}
+
+@keyframes pulse-success {
+  0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.confirmation-summary-receipt {
+  background: var(--df-light);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1.5rem;
+  max-width: 580px;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+/* ==========================================================================
+   Dashboard Components (Page 7/8 user flow & specs)
+   ========================================================================== */
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - 72px);
+}
+
+.dashboard-sidebar {
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid var(--df-border);
+  padding: 1.5rem 1rem;
+  flex-shrink: 0;
+  transition: var(--df-transition);
+}
+
+@media (max-width: 991.98px) {
+  .dashboard-sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    height: 100vh;
+    z-index: 1040;
+    box-shadow: var(--df-shadow-hover);
+  }
+  .dashboard-sidebar.show {
+    left: 0;
+  }
+}
+
+.dashboard-content {
+  flex: 1 1 auto;
+  padding: 2rem;
+  background: var(--df-light);
+}
+
+@media (max-width: 575.98px) {
+  .dashboard-content {
+    padding: 1rem;
+  }
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu-item {
+  margin-bottom: 0.35rem;
+}
+
+.sidebar-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--df-radius-sm);
+  color: var(--df-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: var(--df-transition);
+}
+
+.sidebar-menu-link:hover,
+.sidebar-menu-link.active {
+  background: var(--df-primary-subtle);
+  color: var(--df-primary);
+}
+
+.sidebar-menu-link i {
+  font-size: 1.15rem;
+}
+
+/* Stat Cards */
+.stat-card {
+  background: #ffffff;
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--df-shadow-xs);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: var(--df-transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--df-shadow);
+}
+
+.stat-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--df-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.stat-icon.primary { background: var(--df-primary-subtle); color: var(--df-primary); }
+.stat-icon.success { background: var(--df-success-subtle); color: var(--df-success); }
+.stat-icon.warning { background: var(--df-warning-subtle); color: var(--df-warning); }
+.stat-icon.danger { background: var(--df-danger-subtle); color: var(--df-danger); }
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--df-dark);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--df-muted);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Modern Tables */
+.table-docfinder {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-docfinder th {
+  background: var(--df-light);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--df-muted);
+  font-weight: 700;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--df-border);
+}
+
+.table-docfinder td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--df-border-subtle);
+  vertical-align: middle;
+  background: #ffffff;
+  font-size: 0.9rem;
+}
+
+.table-docfinder tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status Badges */
+.badge-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--df-radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.badge-status.confirmed {
+  background: var(--df-success-subtle);
+  color: var(--df-success);
+}
+
+.badge-status.pending {
+  background: var(--df-warning-subtle);
+  color: var(--df-warning);
+}
+
+.badge-status.cancelled {
+  background: var(--df-danger-subtle);
+  color: var(--df-danger);
+}
+
+/* ==========================================================================
+   Presentation Screen Callout / Mock Window (from PDF)
+   ========================================================================== */
+.browser-window-frame {
+  background: #ffffff;
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--df-shadow);
+}
+
+.browser-window-topbar {
+  background: #f1f5f9;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--df-border);
+}
+
+.browser-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.browser-dot.red { background: #ef4444; }
+.browser-dot.yellow { background: #f59e0b; }
+.browser-dot.green { background: #10b981; }
+
+.browser-url-bar {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius-pill);
+  padding: 0.2rem 1rem;
+  font-size: 0.78rem;
+  color: var(--df-muted);
+  font-family: monospace;
+}
+
+/* ==========================================================================
+   User Journey Section (Page 8)
+   ========================================================================== */
+.user-journey-section {
+  padding: 4rem 0;
+  background: #ffffff;
+}
+
+.journey-step-card {
+  background: var(--df-light);
+  border: 1px solid var(--df-border);
+  border-radius: var(--df-radius);
+  padding: 1.75rem;
+  height: 100%;
+  position: relative;
+  transition: var(--df-transition);
+}
+
+.journey-step-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--df-primary);
+  box-shadow: var(--df-shadow);
+}
+
+.journey-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--df-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Bottom Banner (Page 8) */
+.docfinder-banner-cta {
+  background: linear-gradient(135deg, #1e60d5 0%, #0e3ea0 100%);
+  border-radius: var(--df-radius-lg);
+  padding: 2.5rem 3rem;
+  color: #ffffff;
+  margin: 3rem 0;
+}
+
+@media (max-width: 767.98px) {
+  .docfinder-banner-cta {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer-docfinder {
+  background: var(--df-dark);
+  color: #94a3b8;
+  padding: 4rem 0 2rem;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-docfinder h5 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+}
+
+.footer-docfinder .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-docfinder .footer-links li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-docfinder .footer-links a {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.footer-docfinder .footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1e293b;
+  padding-top: 2rem;
+  margin-top: 3rem;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Empty State & Utility Styles
+   ========================================================================== */
+.empty-state-box {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: #ffffff;
+  border: 1px dashed var(--df-border);
+  border-radius: var(--df-radius);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  color: var(--df-muted);
+  margin-bottom: 1rem;
+}
+
+/* Toast Container */
+.toast-container-docfinder {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1090;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.docfinder-toast {
+  background: #ffffff;
+  border: 1px solid var(--df-border);
+  border-left: 4px solid var(--df-primary);
+  border-radius: var(--df-radius-sm);
+  padding: 0.9rem 1.2rem;
+  box-shadow: var(--df-shadow-hover);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 280px;
+  max-width: 380px;
+  font-size: 0.92rem;
+  animation: slideInRight 0.3s ease;
+}
+
+.docfinder-toast.success { border-left-color: var(--df-success); }
+.docfinder-toast.danger { border-left-color: var(--df-danger); }
+.docfinder-toast.warning { border-left-color: var(--df-warning); }
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Password Toggle Icon */
+.password-toggle-btn {
+  cursor: pointer;
+  color: var(--df-muted);
+  transition: var(--df-transition);
+}
+
+.password-toggle-btn:hover {
+  color: var(--df-primary);
+}

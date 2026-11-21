@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocFinder - Doctor Profile & Instant Booking</title>
+  <meta name="description" content="View doctor biography, visiting hours, consultation fees, and book appointments online.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Header (Matching PDF) -->
+  <nav class="navbar navbar-expand-lg navbar-docfinder sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-icon-wrapper">
+          <i class="bi bi-heart-pulse-fill"></i>
+        </span>
+        <span class="brand-text">Doc<span>Finder</span></span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="doctors.html">Doctors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search.html">Specialties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search.html?location=Dhanmondi">Chambers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2" id="nav-auth-wrapper">
+          <a href="login.html" class="btn btn-primary-docfinder">
+            <i class="bi bi-person"></i> Login / Sign up
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb Navigation -->
+  <div class="bg-white border-bottom py-2">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="doctors.html">Doctors</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Doctor Profile & Booking</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Profile & Booking Flow -->
+  <main class="py-4">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+          <!-- Section 1: Doctor Profile Section (Matching PDF Page 4) -->
+          <div id="doctor-profile-section">
+            <!-- Dynamically populated by js/script.js -->
+            <div class="profile-hero-card text-center py-5">
+              <div class="spinner-border text-primary" role="status"></div>
+              <p class="text-muted mt-2">Loading doctor profile details...</p>
+            </div>
+          </div>
+
+          <!-- Section 2: Interactive 3-Step Booking Engine (Matching PDF Page 5, 6, 7) -->
+          <div class="booking-container-card" id="booking-stepper-card">
+            <!-- Step 1 (Date & Time), Step 2 (Patient Info), Step 3 (Confirmation) handled by script.js -->
+          </div>
+
+          <!-- Section 3: Patient Feedback & Reviews Section -->
+          <div class="card border p-4 mb-4 bg-white" style="border-radius: var(--df-radius);">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="fw-bold mb-0">Patient Reviews & Feedback</h4>
+              <span class="badge bg-warning-subtle text-dark px-3 py-1 fw-bold">
+                <i class="bi bi-star-fill text-warning me-1"></i> 4.8 Overall Score
+              </span>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 border rounded bg-light">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold text-dark">Tanvir Ahmed</span>
+                    <span class="text-warning small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                  </div>
+                  <p class="small text-muted mb-0">"Very thorough checkup and caring attitude. Explained everything about my cardiac health in plain simple terms."</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="p-3 border rounded bg-light">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold text-dark">Farzana Haque</span>
+                    <span class="text-warning small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                  </div>
+                  <p class="small text-muted mb-0">"The chamber staff was punctual and the appointment confirmed through DocFinder was honored right on time."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Related Doctors -->
+          <div class="mt-5">
+            <h4 class="fw-bold mb-3">Other Recommended Specialists</h4>
+            <div id="related-doctors-list">
+              <!-- Rendered by js/script.js -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-docfinder">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper bg-white text-primary">
+              <i class="bi bi-heart-pulse-fill"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-0">Doc<span>Finder</span></h4>
+          </div>
+          <p class="small text-muted">
+            The next-generation doctor search and instant appointment booking platform. Connecting patients with verified healthcare specialists.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="doctors.html">Doctor Directory</a></li>
+            <li><a href="search.html">Search Doctors</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Popular Specialties</h5>
+          <ul class="footer-links">
+            <li><a href="search.html?specialty=Cardiologist">Cardiology</a></li>
+            <li><a href="search.html?specialty=Dermatologist">Dermatology</a></li>
+            <li><a href="search.html?specialty=Pediatrician">Pediatrics</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Helpline</h5>
+          <ul class="footer-links">
+            <li><i class="bi bi-telephone text-primary me-2"></i> +880 1712-000000</li>
+            <li><i class="bi bi-envelope text-primary me-2"></i> appointments@docfinder.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center text-muted">
+        <div>&copy; 2026 DocFinder. All rights reserved.</div>
+        <div>
+          <a href="#" class="text-muted small me-3">Privacy</a>
+          <a href="#" class="text-muted small">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

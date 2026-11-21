@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocFinder - Doctors Directory</title>
+  <meta name="description" content="Browse verified doctor profiles, check consultation fees, chamber locations, and visiting hours.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Header (Matching PDF Page 2 & 3) -->
+  <nav class="navbar navbar-expand-lg navbar-docfinder sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-icon-wrapper">
+          <i class="bi bi-heart-pulse-fill"></i>
+        </span>
+        <span class="brand-text">Doc<span>Finder</span></span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="doctors.html">Doctors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search.html">Specialties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search.html?location=Dhanmondi">Chambers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2" id="nav-auth-wrapper">
+          <a href="login.html" class="btn btn-primary-docfinder">
+            <i class="bi bi-person"></i> Login / Sign up
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header Breadcrumb -->
+  <div class="bg-white border-bottom py-3">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          <h2 class="fw-bold fs-4 mb-0">Doctors Directory</h2>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 small">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Doctors</li>
+            </ol>
+          </nav>
+        </div>
+        <span class="badge bg-primary-subtle text-primary px-3 py-2 fw-semibold" id="results-count-badge">
+          Loading specialists...
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Doctors Directory Section (Matching PDF Page 3) -->
+  <main class="py-4">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Left Sidebar: Specialties (Matching PDF Page 3) -->
+        <aside class="col-lg-3 col-md-4">
+          <!-- Specialty Filter Card -->
+          <div class="filter-card">
+            <div class="filter-title">
+              <span><i class="bi bi-funnel text-primary me-1"></i> Specialties</span>
+            </div>
+            <ul class="filter-list" id="specialties-sidebar-list">
+              <!-- Rendered dynamically by script.js -->
+            </ul>
+          </div>
+
+          <!-- Secondary Filter Card -->
+          <div class="filter-card">
+            <div class="filter-title">
+              <span><i class="bi bi-sliders text-primary me-1"></i> Refine Search</span>
+              <button class="btn btn-link text-muted p-0 small text-decoration-none" id="btn-reset-filters">Reset</button>
+            </div>
+
+            <!-- Fee Filter -->
+            <div class="mb-3">
+              <label class="form-label small fw-semibold d-flex justify-content-between">
+                <span>Max Fee</span>
+                <span class="text-primary" id="fee-range-label">Up to ৳2000</span>
+              </label>
+              <input type="range" class="form-range" min="400" max="2000" step="50" value="2000" id="filter-fee-range">
+            </div>
+
+            <!-- Rating Filter -->
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Minimum Rating</label>
+              <div class="d-flex flex-column gap-1">
+                <label class="form-check small">
+                  <input class="form-check-input" type="radio" name="filter-rating" value="0" checked>
+                  <span class="form-check-label">All Ratings</span>
+                </label>
+                <label class="form-check small">
+                  <input class="form-check-input" type="radio" name="filter-rating" value="4.8">
+                  <span class="form-check-label">4.8★ & above</span>
+                </label>
+                <label class="form-check small">
+                  <input class="form-check-input" type="radio" name="filter-rating" value="4.5">
+                  <span class="form-check-label">4.5★ & above</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Chamber Location -->
+            <div>
+              <label class="form-label small fw-semibold">Chamber Location</label>
+              <select class="form-select form-select-sm" id="filter-location-select">
+                <option value="All Locations">All Chambers</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Panthapath">Panthapath</option>
+                <option value="Gulshan">Gulshan</option>
+                <option value="Bashundhara">Bashundhara</option>
+                <option value="Mirpur">Mirpur</option>
+              </select>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Main Content: Doctor List (Matching PDF Page 3) -->
+        <div class="col-lg-9 col-md-8">
+          <!-- Search & Sort Top Toolbar -->
+          <div class="card border p-3 mb-3 bg-white" style="border-radius: var(--df-radius);">
+            <div class="row g-2 align-items-center">
+              <div class="col-md-7">
+                <div class="input-group">
+                  <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                  <input type="text" class="form-control border-start-0 ps-0" id="search-keyword-input" placeholder="Search doctor by name, specialty, or chamber...">
+                </div>
+              </div>
+
+              <div class="col-md-5 d-flex align-items-center justify-content-md-end gap-2">
+                <span class="text-muted small text-nowrap">Sort by:</span>
+                <select class="form-select form-select-sm w-auto" id="sort-doctors-select">
+                  <option value="rating-desc">Highest Rated</option>
+                  <option value="fee-asc">Fee: Low to High</option>
+                  <option value="fee-desc">Fee: High to Low</option>
+                  <option value="name-asc">Name: A to Z</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor Cards Container (Matching PDF Page 3) -->
+          <div id="doctors-results-list">
+            <!-- Rendered by js/script.js -->
+          </div>
+
+          <!-- Pagination Container -->
+          <div class="mt-4" id="results-pagination">
+            <!-- Rendered by js/script.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-docfinder">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper bg-white text-primary">
+              <i class="bi bi-heart-pulse-fill"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-0">Doc<span>Finder</span></h4>
+          </div>
+          <p class="small text-muted">
+            The next-generation doctor search and instant appointment booking platform. Connecting patients with verified healthcare specialists across Bangladesh.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="doctors.html">Doctor Directory</a></li>
+            <li><a href="search.html">Advanced Search</a></li>
+            <li><a href="dashboard.html">Patient Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Popular Specialties</h5>
+          <ul class="footer-links">
+            <li><a href="doctors.html?specialty=Cardiologist">Cardiology</a></li>
+            <li><a href="doctors.html?specialty=Dermatologist">Dermatology</a></li>
+            <li><a href="doctors.html?specialty=Pediatrician">Pediatrics</a></li>
+            <li><a href="doctors.html?specialty=Neurologist">Neurology</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Support</h5>
+          <ul class="footer-links">
+            <li><i class="bi bi-telephone text-primary me-2"></i> +880 1712-000000</li>
+            <li><i class="bi bi-envelope text-primary me-2"></i> support@docfinder.com</li>
+            <li><i class="bi bi-clock text-primary me-2"></i> Sat-Thu: 9AM - 9PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center text-muted">
+        <div>&copy; 2026 DocFinder Healthcare Platform. All rights reserved.</div>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-muted small">Privacy</a>
+          <a href="#" class="text-muted small">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
